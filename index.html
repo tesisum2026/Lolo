@@ -1,0 +1,1040 @@
+<title>Nacionalizá Uruguay</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+  :root{
+    --bg:#F2F5F4;
+    --surface:#FFFFFF;
+    --surface-2:#E7ECEA;
+    --ink:#101B22;
+    --ink-soft:#51636A;
+    --brand:#0B3350;
+    --brand-2:#124467;
+    --brand-ink:#EAF2F6;
+    --accent:#D9481F;
+    --accent-ink:#FFF6F1;
+    --good:#2E7D53;
+    --border:#D6DEDB;
+    --border-strong:#B9C5C1;
+    --shadow: 0 1px 2px rgba(11,32,40,.06), 0 8px 24px -12px rgba(11,32,40,.18);
+    --radius: 14px;
+    --font-display:'Barlow Condensed', 'Arial Narrow', sans-serif;
+    --font-body:'Work Sans', 'Segoe UI', system-ui, sans-serif;
+    --font-mono:'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0A1418;
+      --surface:#101C22;
+      --surface-2:#16242B;
+      --ink:#E7EEEC;
+      --ink-soft:#93A6A6;
+      --brand:#6FA9CE;
+      --brand-2:#8FBFDD;
+      --brand-ink:#0A1418;
+      --accent:#E67A45;
+      --accent-ink:#1A0F08;
+      --good:#5FBE8C;
+      --border:#233238;
+      --border-strong:#324249;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 28px -12px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0A1418;
+    --surface:#101C22;
+    --surface-2:#16242B;
+    --ink:#E7EEEC;
+    --ink-soft:#93A6A6;
+    --brand:#6FA9CE;
+    --brand-2:#8FBFDD;
+    --brand-ink:#0A1418;
+    --accent:#E67A45;
+    --accent-ink:#1A0F08;
+    --good:#5FBE8C;
+    --border:#233238;
+    --border-strong:#324249;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 28px -12px rgba(0,0,0,.6);
+  }
+
+  *{box-sizing:border-box; min-width:0;}
+  html{overflow-x:hidden;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;}
+  a{color:inherit;}
+  h1,h2,h3{
+    font-family:var(--font-display);
+    font-weight:700;
+    letter-spacing:.2px;
+    text-wrap:balance;
+    margin:0;
+  }
+  .num{font-family:var(--font-mono); font-variant-numeric:tabular-nums;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+  section{padding:64px 0;}
+  @media (max-width:720px){ section{padding:44px 0;} }
+
+  /* ---------- header ---------- */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:color-mix(in srgb, var(--surface) 92%, transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav{
+    max-width:1120px; margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between; gap:24px;
+  }
+  .brand{display:flex; align-items:baseline; gap:8px; text-decoration:none;}
+  .brand .wordmark{
+    font-family:var(--font-display); font-weight:800; font-size:1.5rem;
+    color:var(--brand); letter-spacing:.3px; text-transform:uppercase;
+  }
+  .brand .wordmark em{font-style:normal; color:var(--accent);}
+  .brand .tag{font-size:.72rem; color:var(--ink-soft); letter-spacing:.06em;}
+  .navlinks{display:flex; align-items:center; gap:28px;}
+  .navlinks a{
+    font-size:.92rem; text-decoration:none; color:var(--ink-soft); font-weight:500;
+    border-bottom:2px solid transparent; padding-bottom:3px;
+  }
+  .navlinks a:hover{color:var(--ink); border-color:var(--accent);}
+  @media (max-width:760px){ .navlinks{display:none;} }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-body); font-weight:600; font-size:.92rem;
+    padding:11px 20px; border-radius:999px; border:1px solid transparent;
+    text-decoration:none; cursor:pointer; white-space:nowrap;
+  }
+  .btn-accent{background:var(--accent); color:var(--accent-ink);}
+  .btn-accent:hover{filter:brightness(1.06);}
+  .btn-ghost{background:transparent; color:var(--ink); border-color:var(--border-strong);}
+  .btn-ghost:hover{border-color:var(--ink-soft);}
+  .btn-brand{background:var(--brand); color:var(--brand-ink);}
+  .btn-brand:hover{filter:brightness(1.1);}
+  .btn-block{width:100%; justify-content:center;}
+
+  /* ---------- hero ---------- */
+  .hero{padding:56px 0 40px;}
+  .hero-grid{
+    display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center;
+  }
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;} }
+  .eyebrow{
+    font-family:var(--font-mono); font-size:.76rem; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--brand); background:color-mix(in srgb, var(--brand) 12%, transparent);
+    display:inline-flex; padding:6px 12px; border-radius:999px; margin-bottom:18px;
+  }
+  .hero h1{font-size:clamp(2.1rem, 4.2vw, 3.4rem); line-height:1.05; margin-bottom:18px;}
+  .hero h1 .accent{color:var(--accent);}
+  .hero p.lead{font-size:1.12rem; color:var(--ink-soft); max-width:46ch; margin-bottom:28px;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:28px;}
+  .trust-row{display:flex; gap:22px; flex-wrap:wrap;}
+  .trust-item{display:flex; align-items:center; gap:8px; font-size:.84rem; color:var(--ink-soft);}
+  .trust-item .dot{width:7px; height:7px; border-radius:50%; background:var(--good); flex:none;}
+
+  .stamp-card{
+    background:var(--brand); color:var(--brand-ink); border-radius:20px;
+    padding:36px 30px; position:relative; overflow:hidden; box-shadow:var(--shadow);
+    min-height:320px; display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .stamp-card::after{
+    content:""; position:absolute; inset:-40% -20% auto auto; width:260px; height:260px;
+    background:radial-gradient(circle, color-mix(in srgb, var(--accent) 45%, transparent), transparent 70%);
+  }
+  .stamp-badge{
+    align-self:flex-start; border:3px solid var(--accent); color:var(--accent);
+    border-radius:50%; width:112px; height:112px; display:flex; align-items:center; justify-content:center;
+    text-align:center; font-family:var(--font-display); font-weight:800; font-size:.82rem;
+    text-transform:uppercase; letter-spacing:.06em; transform:rotate(-14deg); line-height:1.15;
+    background:color-mix(in srgb, var(--brand-ink) 6%, transparent); position:relative; z-index:1;
+  }
+  .stamp-figures{position:relative; z-index:1;}
+  .stamp-figures .label{font-size:.76rem; text-transform:uppercase; letter-spacing:.08em; opacity:.75; margin-bottom:6px;}
+  .stamp-figures .value{font-family:var(--font-mono); font-size:2.1rem; font-weight:600;}
+  .stamp-figures .sub{font-size:.82rem; opacity:.8; margin-top:4px;}
+
+  /* ---------- ad slot ---------- */
+  .ad-slot{
+    border:1px dashed var(--border-strong); border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--ink-soft); font-size:.78rem; letter-spacing:.05em; text-transform:uppercase;
+    background:var(--surface-2); font-family:var(--font-mono);
+  }
+  .ad-leaderboard{height:100px;}
+  .ad-rect{height:140px;}
+
+  /* ---------- how it works ---------- */
+  .section-head{max-width:64ch; margin-bottom:36px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(1.7rem, 3vw, 2.3rem);}
+  .section-head p{color:var(--ink-soft); margin-top:10px; font-size:1.02rem;}
+
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  @media (max-width:860px){ .steps{grid-template-columns:1fr 1fr;} }
+  @media (max-width:520px){ .steps{grid-template-columns:1fr;} }
+  .step{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:22px 20px; display:flex; flex-direction:column; gap:10px;
+  }
+  .step .n{
+    font-family:var(--font-mono); font-size:.82rem; color:var(--accent); font-weight:600;
+  }
+  .step h3{font-size:1.08rem; font-family:var(--font-body); font-weight:600;}
+  .step p{margin:0; font-size:.9rem; color:var(--ink-soft);}
+
+  /* ---------- presets ---------- */
+  .presets{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:18px;}
+  .presets-label{font-size:.84rem; color:var(--ink-soft); font-weight:600; flex:none;}
+  .presets-row{display:flex; gap:8px; flex-wrap:wrap;}
+  .chip{
+    display:inline-flex; align-items:center; gap:6px; font-size:.86rem; font-weight:500;
+    padding:8px 14px; border-radius:999px; border:1px solid var(--border-strong);
+    background:var(--surface); color:var(--ink); cursor:pointer; font-family:var(--font-body);
+  }
+  .chip:hover{border-color:var(--brand); color:var(--brand);}
+  .chip.active{background:var(--brand); border-color:var(--brand); color:var(--brand-ink);}
+
+  /* ---------- mode tabs ---------- */
+  .mode-tabs{
+    display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:22px;
+    background:var(--surface-2); border:1px solid var(--border); border-radius:14px; padding:6px;
+  }
+  .mode-tab{
+    font-family:var(--font-body); font-weight:600; font-size:.92rem; text-align:left;
+    padding:14px 16px; border-radius:10px; border:none; background:transparent; color:var(--ink-soft);
+    cursor:pointer; display:flex; flex-direction:column; gap:2px;
+  }
+  .mode-tab .t{color:inherit;}
+  .mode-tab .d{font-size:.78rem; font-weight:400; opacity:.8;}
+  .mode-tab.active{background:var(--surface); color:var(--brand); box-shadow:var(--shadow);}
+  .mode-tab.active .d{color:var(--ink-soft);}
+  @media (max-width:520px){ .mode-tabs{grid-template-columns:1fr;} }
+  .hidden{display:none !important;}
+  .toggle-group{display:flex; gap:8px;}
+  .toggle-btn{
+    flex:1; font-family:var(--font-body); font-weight:600; font-size:.88rem;
+    padding:11px 12px; border-radius:9px; border:1px solid var(--border-strong);
+    background:var(--bg); color:var(--ink-soft); cursor:pointer; text-align:center;
+  }
+  .toggle-btn:hover{border-color:var(--brand);}
+  .toggle-btn.active{background:var(--brand); border-color:var(--brand); color:var(--brand-ink);}
+  .regime-note{
+    font-size:.8rem; color:var(--ink-soft); background:var(--surface-2); border-radius:9px; padding:10px 12px;
+    border:1px solid var(--border);
+  }
+
+  /* ---------- calculator ---------- */
+  .calc-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:20px;
+    box-shadow:var(--shadow); overflow:hidden;
+  }
+  .calc-grid{display:grid; grid-template-columns:1fr 1fr;}
+  @media (max-width:860px){ .calc-grid{grid-template-columns:1fr;} }
+  .calc-form{padding:32px; border-right:1px solid var(--border); display:flex; flex-direction:column; gap:18px;}
+  @media (max-width:860px){ .calc-form{border-right:none; border-bottom:1px solid var(--border);} }
+  .field{display:flex; flex-direction:column; gap:6px;}
+  .field label{font-size:.82rem; font-weight:600; color:var(--ink-soft);}
+  .field .hint{font-size:.76rem; color:var(--ink-soft); opacity:.85;}
+  .field input, .field select, .field textarea{
+    font-family:var(--font-mono); font-size:.98rem; padding:10px 12px;
+    border-radius:9px; border:1px solid var(--border-strong); background:var(--bg); color:var(--ink);
+  }
+  .field select{font-family:var(--font-body); font-weight:500;}
+  .field textarea{font-family:var(--font-body); resize:vertical;}
+  .field input:focus, .field select:focus, .field textarea:focus{outline:2px solid var(--brand); outline-offset:1px;}
+  .row2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  @media (max-width:480px){ .row2{grid-template-columns:1fr;} }
+  .imesi-note{
+    font-size:.8rem; color:var(--ink-soft); background:var(--surface-2); border-radius:9px; padding:10px 12px;
+    border:1px solid var(--border);
+  }
+
+  .calc-results{padding:32px; display:flex; flex-direction:column; gap:16px; background:var(--surface-2);}
+  .result-total{
+    background:var(--brand); color:var(--brand-ink); border-radius:14px; padding:20px 22px;
+    display:flex; flex-direction:column; gap:4px; min-width:0;
+  }
+  .result-total .label{font-size:.78rem; text-transform:uppercase; letter-spacing:.07em; opacity:.8;}
+  .result-total .value{
+    font-family:var(--font-mono); font-size:clamp(1.5rem, 8vw, 2.3rem); font-weight:600;
+    overflow-wrap:anywhere; line-height:1.15;
+  }
+  .result-total .sub{font-size:.82rem; opacity:.85;}
+  .breakdown{border:1px solid var(--border); border-radius:12px; overflow:hidden; background:var(--surface);}
+  .breakdown-row{
+    display:flex; align-items:baseline; justify-content:space-between; gap:10px; padding:11px 16px;
+    border-bottom:1px solid var(--border); font-size:.92rem; flex-wrap:wrap;
+  }
+  .breakdown-row:last-child{border-bottom:none;}
+  .breakdown-row .k{color:var(--ink-soft); min-width:0; overflow-wrap:anywhere;}
+  .breakdown-row .k .pct{font-family:var(--font-mono); font-size:.78rem; color:var(--ink-soft); margin-left:6px; white-space:nowrap;}
+  .breakdown-row .v{font-family:var(--font-mono); font-weight:600; white-space:nowrap; margin-left:auto;}
+  .breakdown-row.subtotal .v, .breakdown-row.subtotal .k{color:var(--ink);}
+  .disclaimer-mini{font-size:.78rem; color:var(--ink-soft); line-height:1.45;}
+  #quote-cta{display:flex; flex-direction:column; gap:12px;}
+  .inline-lead{
+    display:flex; flex-direction:column; gap:10px; background:var(--surface); border:1px solid var(--border);
+    border-radius:12px; padding:16px;
+  }
+  .inline-lead .hint{text-align:center;}
+
+  /* ---------- lead CTA ---------- */
+  .lead-card{
+    background:var(--brand); color:var(--brand-ink); border-radius:20px; padding:40px;
+    display:grid; grid-template-columns:1.1fr .9fr; gap:36px; align-items:center;
+  }
+  @media (max-width:860px){ .lead-card{grid-template-columns:1fr; padding:28px;} }
+  .lead-card h2{font-size:clamp(1.6rem,3vw,2.1rem); margin-bottom:12px;}
+  .lead-card p{color:color-mix(in srgb, var(--brand-ink) 82%, transparent); max-width:46ch; margin-bottom:0;}
+  .lead-points{list-style:none; margin:18px 0 0; padding:0; display:flex; flex-direction:column; gap:9px;}
+  .lead-points li{display:flex; gap:10px; font-size:.92rem; align-items:flex-start;}
+  .lead-points li::before{content:"✓"; color:var(--accent); font-weight:700; flex:none;}
+  .lead-form{
+    background:var(--surface); color:var(--ink); border-radius:14px; padding:24px; display:flex; flex-direction:column; gap:12px;
+  }
+  .lead-form .field label{color:var(--ink-soft);}
+  .lead-form .field input{background:var(--bg);}
+  .lead-form .fallback{font-size:.78rem; color:var(--ink-soft); text-align:center; margin-top:2px;}
+  .lead-form .fallback a{color:var(--brand); font-weight:600; text-decoration:underline;}
+
+  /* ---------- reference table ---------- */
+  .ref-table{width:100%; border-collapse:collapse; background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden;}
+  .ref-table-wrap{overflow-x:auto; border-radius:12px;}
+  .ref-table th, .ref-table td{padding:12px 16px; text-align:left; font-size:.9rem; border-bottom:1px solid var(--border);}
+  .ref-table th{
+    font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.06em;
+    color:var(--ink-soft); background:var(--surface-2); font-weight:600;
+  }
+  .ref-table td.num{font-weight:600;}
+  .ref-table tr:last-child td{border-bottom:none;}
+
+  /* ---------- panel interno ---------- */
+  .panel-form{
+    margin-top:16px; padding:20px; border:1px dashed var(--border-strong); border-radius:14px;
+    background:var(--surface-2); display:flex; flex-direction:column; gap:14px; max-width:640px;
+  }
+
+  /* ---------- legal ---------- */
+  .legal{
+    background:var(--surface-2); border:1px solid var(--border); border-radius:14px; padding:24px 26px;
+    font-size:.86rem; color:var(--ink-soft); line-height:1.6;
+  }
+  .legal strong{color:var(--ink);}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--border); padding:36px 0; margin-top:20px;}
+  .footer-grid{display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;}
+  .footer-grid .brand .wordmark{font-size:1.15rem;}
+  .footer-links{display:flex; gap:20px; flex-wrap:wrap; font-size:.86rem; color:var(--ink-soft);}
+  .footer-links a{text-decoration:none;}
+  .footer-links a:hover{color:var(--ink);}
+  .foot-note{font-size:.78rem; color:var(--ink-soft); margin-top:18px;}
+
+  /* ---------- phones ---------- */
+  @media (max-width:480px){
+    .wrap{padding:0 16px;}
+    .nav{padding:12px 16px; gap:12px;}
+    .brand .wordmark{font-size:1.2rem;}
+    .btn{padding:10px 16px; font-size:.86rem;}
+    .hero{padding:32px 0 28px;}
+    .stamp-card{padding:24px 20px; min-height:0;}
+    .calc-form, .calc-results{padding:18px;}
+    .mode-tab{padding:12px;}
+    .lead-card{padding:20px;}
+    .panel-form{padding:16px;}
+    .result-total{padding:16px;}
+    .breakdown-row{padding:10px 12px; font-size:.86rem;}
+  }
+</style>
+
+<header class="site">
+  <div class="nav">
+    <a class="brand" href="#top">
+      <span class="wordmark">Nacionaliz<em>á</em></span>
+      <span class="tag">.uy</span>
+    </a>
+    <nav class="navlinks">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#calculadora">Calculadora</a>
+      <a href="#aranceles">Aranceles</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-accent" href="#contacto">Pedí tu cotización</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Importación · Uruguay</span>
+        <h1>¿Cuánto te cuesta <span class="accent">nacionalizar</span> lo que querés traer?</h1>
+        <p class="lead">De un pedido de Temu a un contenedor entero: calculá en menos de un minuto cuánto te sale puesto en Uruguay. Y si preferís no ocuparte de nada, te lo gestionamos con un despachante de aduana matriculado.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-accent" href="#calculadora">Calculá gratis</a>
+          <a class="btn btn-ghost" href="#como-funciona">Cómo funciona</a>
+        </div>
+        <div class="trust-row">
+          <div class="trust-item"><span class="dot"></span>Tarifas de referencia DNA / MERCOSUR 2026</div>
+          <div class="trust-item"><span class="dot"></span>Gestión con despachante matriculado</div>
+        </div>
+      </div>
+      <div class="stamp-card">
+        <div class="stamp-badge">Despacho<br>Express</div>
+        <div class="stamp-figures">
+          <div class="label">Solo necesitamos</div>
+          <div class="value">3 datos</div>
+          <div class="sub">categoría, peso y valor — el flete, el seguro y el despacho se estiman solos.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="ad-slot ad-leaderboard">Espacio publicitario</div>
+  </div>
+
+  <section id="como-funciona">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Cómo funciona</span>
+        <h2>De la cotización a tu puerta, en cuatro pasos</h2>
+        <p>Vos decidís hasta dónde llegar: podés quedarte con la estimación, o dejar que nosotros gestionemos todo el trámite.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="n">01</span>
+          <h3>Cotizá tu producto</h3>
+          <p>Elegí compra personal o importación en volumen, cargá los datos básicos. El resto se estima solo.</p>
+        </div>
+        <div class="step">
+          <span class="n">02</span>
+          <h3>Confirmá el trámite</h3>
+          <p>Un despachante de aduana matriculado revisa la clasificación arancelaria exacta de tu producto.</p>
+        </div>
+        <div class="step">
+          <span class="n">03</span>
+          <h3>Gestionamos la importación</h3>
+          <p>Nos encargamos del despacho, los pagos de aduana y la logística hasta Uruguay.</p>
+        </div>
+        <div class="step">
+          <span class="n">04</span>
+          <h3>Lo recibís nacionalizado</h3>
+          <p>Tu producto llega a tu puerta, ya despachado, sin trámites pendientes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="calculadora">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Calculadora</span>
+        <h2>Costo nacionalizado estimado</h2>
+        <p>Elegí si es una compra personal (Temu, AliExpress, Shein) o una importación en volumen. Cada una tiene su propio régimen de impuestos en Uruguay, y esta calculadora aplica el que corresponde.</p>
+      </div>
+
+      <div class="mode-tabs" role="tablist">
+        <button type="button" class="mode-tab active" id="tab-b2b" data-mode="b2b">
+          <span class="t">Importación comercial (B2B)</span>
+          <span class="d">Volumen, reventa, sin tope de valor — con despachante</span>
+        </button>
+        <button type="button" class="mode-tab" id="tab-personal" data-mode="personal">
+          <span class="t">Compra personal</span>
+          <span class="d">Temu, AliExpress, Shein — hasta USD 800 y 20kg por envío</span>
+        </button>
+      </div>
+
+      <div class="presets" id="presets-wrap">
+        <span class="presets-label">Probá con:</span>
+        <div class="presets-row" id="presets"></div>
+      </div>
+
+      <div class="calc-card">
+        <div class="calc-grid">
+          <div class="calc-form">
+
+            <div id="personal-fields" class="hidden">
+              <div class="row2">
+                <div class="field">
+                  <label for="origen">País de origen</label>
+                  <select id="origen">
+                    <option value="usa">Estados Unidos</option>
+                    <option value="otro" selected>Otro país (China / Temu, etc.)</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="valor-personal">Valor de la compra (USD)</label>
+                  <input id="valor-personal" type="number" inputmode="decimal" min="0" step="1" value="150">
+                  <span class="hint">Precio + envío + impuestos que ya cobró el vendedor</span>
+                </div>
+              </div>
+              <div class="field">
+                <label>¿Tenés franquicia disponible este año?</label>
+                <div class="toggle-group" id="franquicia-toggle">
+                  <button type="button" class="toggle-btn active" data-value="si">Sí, me queda cupo</button>
+                  <button type="button" class="toggle-btn" data-value="no">No, ya la usé</button>
+                </div>
+              </div>
+              <div class="regime-note">Franquicia: hasta USD 800 al año en 3 envíos, sin aranceles — IVA 22% (exento hasta USD 200 solo si es de EE.UU.). Régimen simplificado: 60% del valor, mínimo USD 20, sin límite de envíos. Tope por envío: USD 800 y 20kg. Si compraste en Temu, la app ya te cobra el IVA en el pago — usá esto para verificar el número.</div>
+            </div>
+
+            <div id="b2b-fields">
+              <div class="field">
+                <label for="categoria">Categoría del producto</label>
+                <select id="categoria"></select>
+                <span class="hint" id="categoria-hint"></span>
+              </div>
+              <div class="row2">
+                <div class="field">
+                  <label for="peso">Peso por unidad (kg)</label>
+                  <input id="peso" type="number" inputmode="decimal" min="0.1" step="0.1" value="2.5">
+                  <span class="hint">Zapatillas ≈1kg · notebook ≈2.5kg · bici ≈15kg</span>
+                </div>
+                <div class="field">
+                  <label for="fob">Valor por unidad — FOB (USD)</label>
+                  <input id="fob" type="number" inputmode="decimal" min="0" step="1" value="500">
+                </div>
+              </div>
+              <div class="field">
+                <label for="cantidad">Cantidad (unidades)</label>
+                <input id="cantidad" type="number" inputmode="numeric" min="1" step="1" value="1">
+              </div>
+              <div class="imesi-note">El flete, el seguro y los honorarios de despacho se estiman automáticamente según el peso y el valor del lote — no hace falta que los cargues a mano. Vehículos, bebidas alcohólicas, tabaco y combustibles pagan IMESI además de estos tributos y no están cubiertos por esta calculadora — <a href="#contacto">escribinos</a> para cotizarlos aparte.</div>
+            </div>
+
+            <div class="field">
+              <label for="cambio">Tipo de cambio (USD → UYU)</label>
+              <input id="cambio" type="number" inputmode="decimal" min="1" step="0.1" value="40">
+              <span class="hint">Ajustalo al del día — hoy ronda los $40.</span>
+            </div>
+
+          </div>
+
+          <div class="calc-results">
+            <div class="result-total">
+              <span class="label" id="out-label">Costo nacionalizado total</span>
+              <span class="value num" id="out-total">USD 0</span>
+              <span class="sub num" id="out-total-uyu">≈ $0 UYU</span>
+              <span class="sub" id="out-sobrecosto">+0% sobre el valor de compra</span>
+            </div>
+            <div class="breakdown" id="breakdown"></div>
+
+            <div id="quote-cta">
+              <button type="button" class="btn btn-accent btn-block" id="send-quote-btn">Que lo gestionemos nosotros →</button>
+              <div class="inline-lead hidden" id="inline-lead">
+                <div class="row2">
+                  <div class="field">
+                    <label for="inline-nombre">Nombre</label>
+                    <input id="inline-nombre" type="text" placeholder="Tu nombre">
+                  </div>
+                  <div class="field">
+                    <label for="inline-contacto">WhatsApp o email</label>
+                    <input id="inline-contacto" type="text" placeholder="099 123 456 o tu@email.com">
+                  </div>
+                </div>
+                <button type="button" class="btn btn-brand btn-block" id="inline-lead-submit">Confirmar y enviar por WhatsApp</button>
+                <span class="hint" id="inline-lead-hint"></span>
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-ghost btn-block" id="share-btn">Compartir este resultado</button>
+            <p class="disclaimer-mini" id="disclaimer-mini"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap">
+      <div class="lead-card">
+        <div>
+          <h2>¿Preferís que lo hagamos nosotros?</h2>
+          <p>Dejanos tus datos y te contactamos con la cotización formal, confirmada por un despachante de aduana matriculado.</p>
+          <ul class="lead-points">
+            <li>Clasificación arancelaria correcta de tu producto</li>
+            <li>Gestión completa del despacho de aduana</li>
+            <li>Sin trámites: te llega listo a tu puerta</li>
+          </ul>
+        </div>
+        <form class="lead-form" id="lead-form">
+          <div class="field">
+            <label for="lead-nombre">Nombre</label>
+            <input id="lead-nombre" type="text" placeholder="Tu nombre" required>
+          </div>
+          <div class="field">
+            <label for="lead-contacto">WhatsApp o email</label>
+            <input id="lead-contacto" type="text" placeholder="099 123 456 o tu@email.com" required>
+          </div>
+          <div class="field">
+            <label for="lead-producto">¿Qué querés importar?</label>
+            <input id="lead-producto" type="text" placeholder="Ej: bicicleta eléctrica">
+          </div>
+          <button type="submit" class="btn btn-accent btn-block">Enviar por WhatsApp</button>
+          <span class="fallback">o escribinos a <a href="mailto:hola@nacionaliza.uy">hola@nacionaliza.uy</a></span>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="ad-slot ad-rect">Espacio publicitario</div>
+  </div>
+
+  <section id="aranceles">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Referencia</span>
+        <h2>Aranceles por categoría</h2>
+        <p>Tasas orientativas del Arancel Externo Común de MERCOSUR aplicadas por la calculadora. La posición arancelaria (NCM) de cada producto puede tener una tasa distinta.</p>
+      </div>
+      <div class="ref-table-wrap">
+        <table class="ref-table" id="ref-table">
+          <thead>
+            <tr><th>Categoría</th><th>Arancel (AEC)</th><th>IVA</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="legal">
+        <strong>Antes de tomar esta calculadora como definitiva:</strong> los valores son una estimación referencial armada con tasas públicas (Arancel Externo Común de MERCOSUR, tasa consular e IVA de Uruguay para importación comercial; Decreto 50/026 de franquicias postales para compra personal) y no constituyen asesoramiento aduanero ni una cotización vinculante. La clasificación arancelaria correcta de cada producto depende de su posición NCM específica, y solo un despachante de aduana matriculado puede confirmarla.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <button type="button" class="btn btn-ghost" id="panel-toggle">Panel interno — generar mail para el despachante</button>
+      <div class="panel-form hidden" id="panel-form">
+        <p class="disclaimer-mini">Uso interno, no para clientes: pegá acá los datos del pedido que te llegó por WhatsApp y armá el mail para tu despachante con un click.</p>
+        <div class="row2">
+          <div class="field">
+            <label for="panel-cliente">Cliente</label>
+            <input id="panel-cliente" type="text" placeholder="Nombre del cliente">
+          </div>
+          <div class="field">
+            <label for="panel-contacto">Contacto</label>
+            <input id="panel-contacto" type="text" placeholder="WhatsApp o email">
+          </div>
+        </div>
+        <div class="field">
+          <label for="panel-detalle">Detalle del pedido</label>
+          <textarea id="panel-detalle" rows="4" placeholder="Pegá acá el mensaje de WhatsApp con el producto y el costo estimado"></textarea>
+        </div>
+        <button type="button" class="btn btn-brand" id="panel-submit">Abrir mail para el despachante</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <a class="brand" href="#top">
+        <span class="wordmark">Nacionaliz<em>á</em></span>
+      </a>
+      <div class="footer-links">
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#calculadora">Calculadora</a>
+        <a href="#aranceles">Aranceles</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </div>
+    <p class="foot-note">© 2026 Nacionalizá. Herramienta de estimación referencial — no sustituye el asesoramiento de un despachante de aduana matriculado.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var TASA_CONSULAR = 0.05; // extrazona (Asia/China y resto fuera de Mercosur) — Mercosur paga 3%
+  var IVA_PERSONAL = 0.22;
+  var FRANQUICIA_EXENTO_USA = 200;
+  var SIMPLIFICADO_RATE = 0.60;
+  var SIMPLIFICADO_MIN = 20;
+  var TOPE_VALOR_PERSONAL = 800;
+  var TOPE_PESO_PERSONAL = 20;
+
+  var CATEGORIES = [
+    { id:'ropa', label:'Ropa y calzado', arancel:0.20, iva:0.22 },
+    { id:'electro', label:'Electrónica y tecnología', arancel:0.12, iva:0.22 },
+    { id:'juguetes', label:'Juguetes y juegos', arancel:0.20, iva:0.22 },
+    { id:'hogar', label:'Hogar y muebles', arancel:0.18, iva:0.22 },
+    { id:'herramientas', label:'Herramientas y maquinaria', arancel:0.14, iva:0.22 },
+    { id:'autopartes', label:'Repuestos y autopartes', arancel:0.16, iva:0.22 },
+    { id:'cosmetica', label:'Cosmética y perfumería', arancel:0.20, iva:0.22 },
+    { id:'deportes', label:'Deportes y fitness', arancel:0.20, iva:0.22 },
+    { id:'libros', label:'Libros y material educativo', arancel:0, iva:0 },
+    { id:'otros', label:'Otros / general', arancel:0.20, iva:0.22 }
+  ];
+
+  // Productos populares (modo B2B) -> autocompletan categoría, peso y valor de un click.
+  var PRESETS = [
+    { emoji:'🎧', label:'Auriculares BT', categoria:'electro', peso:0.08, fob:3, cantidad:1 },
+    { emoji:'⌚', label:'Reloj inteligente', categoria:'electro', peso:0.15, fob:12, cantidad:1 },
+    { emoji:'👟', label:'Zapatillas', categoria:'ropa', peso:1, fob:15, cantidad:1 },
+    { emoji:'📱', label:'Funda de celular', categoria:'electro', peso:0.03, fob:0.8, cantidad:1 },
+    { emoji:'💡', label:'Tira LED', categoria:'hogar', peso:0.3, fob:5, cantidad:1 },
+    { emoji:'🔊', label:'Parlante BT', categoria:'electro', peso:0.4, fob:18, cantidad:1 }
+  ];
+
+  var fmt = new Intl.NumberFormat('es-UY', { style:'currency', currency:'USD', minimumFractionDigits:2, maximumFractionDigits:2 });
+  var fmtPct = function(n){ return (n*100).toFixed(0) + '%'; };
+  var fmtUyu = function(n){ return new Intl.NumberFormat('es-UY', { maximumFractionDigits:0 }).format(n); };
+
+  // ---- estimaciones automáticas (flete, seguro, despacho) ----
+  function estimateFlete(pesoKg){
+    var base, rate;
+    if (pesoKg <= 1){ base = 25; rate = 18; }
+    else if (pesoKg <= 5){ base = 25; rate = 12; }
+    else if (pesoKg <= 15){ base = 20; rate = 9; }
+    else if (pesoKg <= 50){ base = 0; rate = 7; }
+    else if (pesoKg <= 200){ base = 0; rate = 5.5; }
+    else { base = 0; rate = 4; }
+    return Math.max(20, base + pesoKg * rate);
+  }
+  function estimateSeguro(fob){
+    return fob * 0.015;
+  }
+  function estimateDespacho(cif){
+    if (cif <= 500) return 45;
+    if (cif <= 2000) return 70;
+    if (cif <= 8000) return 120;
+    if (cif <= 20000) return 220;
+    return 350;
+  }
+
+  // ---- refs ----
+  var $tabPersonal = document.getElementById('tab-personal');
+  var $tabB2b = document.getElementById('tab-b2b');
+  var $personalFields = document.getElementById('personal-fields');
+  var $b2bFields = document.getElementById('b2b-fields');
+  var $presetsWrap = document.getElementById('presets-wrap');
+
+  var $origen = document.getElementById('origen');
+  var $valorPersonal = document.getElementById('valor-personal');
+  var $franquiciaToggle = document.getElementById('franquicia-toggle');
+  var $franquiciaBtns = $franquiciaToggle ? $franquiciaToggle.querySelectorAll('.toggle-btn') : [];
+  var franquiciaValue = 'si';
+
+  var $categoria = document.getElementById('categoria');
+  var $categoriaHint = document.getElementById('categoria-hint');
+  var $peso = document.getElementById('peso');
+  var $fob = document.getElementById('fob');
+  var $cantidad = document.getElementById('cantidad');
+  var $cambio = document.getElementById('cambio');
+
+  var $breakdown = document.getElementById('breakdown');
+  var $outLabel = document.getElementById('out-label');
+  var $outTotal = document.getElementById('out-total');
+  var $outTotalUyu = document.getElementById('out-total-uyu');
+  var $outSobrecosto = document.getElementById('out-sobrecosto');
+  var $disclaimerMini = document.getElementById('disclaimer-mini');
+  var $refTableBody = document.querySelector('#ref-table tbody');
+  var $presets = document.getElementById('presets');
+  var $shareBtn = document.getElementById('share-btn');
+  var $quoteCta = document.getElementById('quote-cta');
+  var $inlineLead = document.getElementById('inline-lead');
+  var $inlineLeadHint = document.getElementById('inline-lead-hint');
+
+  var MODE = 'b2b';
+  var lastResult = null; // { total, totalUyu, sobrecosto, summaryLine }
+
+  CATEGORIES.forEach(function(c){
+    var opt = document.createElement('option');
+    opt.value = c.id;
+    opt.textContent = c.label;
+    $categoria.appendChild(opt);
+
+    var tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + c.label + '</td>' +
+      '<td class="num">' + fmtPct(c.arancel) + '</td>' +
+      '<td class="num">' + (c.iva === 0 ? 'Exento' : fmtPct(c.iva)) + '</td>';
+    $refTableBody.appendChild(tr);
+  });
+  $categoria.value = 'electro';
+
+  PRESETS.forEach(function(p){
+    var chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'chip';
+    chip.innerHTML = '<span>' + p.emoji + '</span><span>' + p.label + '</span>';
+    chip.addEventListener('click', function(){
+      setMode('b2b');
+      $categoria.value = p.categoria;
+      $peso.value = p.peso;
+      $fob.value = p.fob;
+      $cantidad.value = p.cantidad || 1;
+      recalc();
+      document.getElementById('calculadora').scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+    $presets.appendChild(chip);
+  });
+
+  function currentCategory(){
+    var id = $categoria.value;
+    for (var i=0;i<CATEGORIES.length;i++){ if (CATEGORIES[i].id === id) return CATEGORIES[i]; }
+    return CATEGORIES[0];
+  }
+
+  function num(el){
+    var v = parseFloat(el.value);
+    return isNaN(v) || v < 0 ? 0 : v;
+  }
+
+  function row(label, pctLabel, value, opts){
+    opts = opts || {};
+    var div = document.createElement('div');
+    div.className = 'breakdown-row' + (opts.subtotal ? ' subtotal' : '');
+    div.innerHTML = '<span class="k">' + label + (pctLabel ? '<span class="pct">' + pctLabel + '</span>' : '') + '</span>' +
+      '<span class="v num">' + fmt.format(value) + '</span>';
+    return div;
+  }
+  function noteRow(text){
+    var div = document.createElement('div');
+    div.className = 'breakdown-row';
+    div.innerHTML = '<span class="k" style="font-size:.82rem;">' + text + '</span>';
+    return div;
+  }
+
+  function setMode(mode){
+    MODE = mode;
+    $tabPersonal.classList.toggle('active', mode === 'personal');
+    $tabB2b.classList.toggle('active', mode === 'b2b');
+    $personalFields.classList.toggle('hidden', mode !== 'personal');
+    $b2bFields.classList.toggle('hidden', mode !== 'b2b');
+    $presetsWrap.classList.toggle('hidden', mode !== 'b2b');
+    $quoteCta.classList.toggle('hidden', mode !== 'b2b');
+    $inlineLead.classList.add('hidden');
+    $inlineLeadHint.textContent = '';
+    recalc();
+  }
+  $tabPersonal.addEventListener('click', function(){ setMode('personal'); });
+  $tabB2b.addEventListener('click', function(){ setMode('b2b'); });
+
+  function recalcPersonal(){
+    var valor = num($valorPersonal);
+    var cambio = Math.max(1, num($cambio) || 40);
+    var esUSA = $origen.value === 'usa';
+    var tieneFranquicia = franquiciaValue === 'si';
+
+    var ivaFranquicia = esUSA && valor <= FRANQUICIA_EXENTO_USA ? 0 : valor * IVA_PERSONAL;
+    var totalFranquicia = valor + ivaFranquicia;
+    var tributoSimplificado = Math.max(valor * SIMPLIFICADO_RATE, SIMPLIFICADO_MIN);
+    var totalSimplificado = valor + tributoSimplificado;
+
+    var usarFranquicia = tieneFranquicia; // más barata siempre que esté disponible
+    var total = usarFranquicia ? totalFranquicia : totalSimplificado;
+    var sobrecosto = valor > 0 ? ((total - valor) / valor) * 100 : 0;
+
+    $outLabel.textContent = 'Costo total con impuestos';
+    $outTotal.textContent = fmt.format(total);
+    $outTotalUyu.textContent = '≈ ' + fmtUyu(total * cambio) + ' UYU';
+    $outSobrecosto.textContent = (sobrecosto >= 0 ? '+' : '') + sobrecosto.toFixed(0) + '% sobre el valor de compra';
+
+    $breakdown.innerHTML = '';
+    $breakdown.appendChild(row('Valor de la compra', null, valor));
+    if (usarFranquicia){
+      var pctLabel = (esUSA && valor <= FRANQUICIA_EXENTO_USA) ? 'exento' : fmtPct(IVA_PERSONAL);
+      $breakdown.appendChild(row('IVA (franquicia anual)', pctLabel, ivaFranquicia));
+      $breakdown.appendChild(row('Total nacionalizado', null, total, { subtotal:true }));
+      $breakdown.appendChild(noteRow('Sin franquicia (régimen simplificado, 60%) te saldría ' + fmt.format(totalSimplificado) + '.'));
+    } else {
+      $breakdown.appendChild(row('Prestación única', fmtPct(SIMPLIFICADO_RATE) + ' mín. USD20', tributoSimplificado));
+      $breakdown.appendChild(row('Total nacionalizado', null, total, { subtotal:true }));
+      if (esUSA && valor <= FRANQUICIA_EXENTO_USA){
+        $breakdown.appendChild(noteRow('Con franquicia disponible pagarías USD 0 de IVA por estar bajo los USD 200 desde EE.UU.'));
+      } else {
+        $breakdown.appendChild(noteRow('Con franquicia disponible (22% IVA) te saldría ' + fmt.format(totalFranquicia) + '.'));
+      }
+    }
+    if (valor > TOPE_VALOR_PERSONAL){
+      $breakdown.appendChild(noteRow('⚠ Superás el tope de USD 800 por envío del régimen personal — pasate a "Importación comercial".'));
+    }
+
+    $disclaimerMini.textContent = 'IVA y prestación única calculados con los porcentajes oficiales del régimen de envíos postales (Decreto 50/026, vigente desde mayo 2026). Tope: USD 800 y 20kg. La exoneración de IVA hasta USD 200 desde EE.UU. viene con idas y vueltas (aduanas la postergó más de una vez en 2026) — confirmá el estado vigente antes de comprar. No cubre productos con IMESI (vehículos, alcohol, tabaco, combustibles). Se liquida en pesos al tipo de cambio del día.';
+
+    lastResult = {
+      summary: (usarFranquicia ? 'con franquicia' : 'régimen simplificado') + ', compra de ' + fmt.format(valor)
+    };
+  }
+
+  function recalcB2B(){
+    var cat = currentCategory();
+    $categoriaHint.textContent = 'Arancel de referencia ' + fmtPct(cat.arancel) + ' · IVA ' + (cat.iva === 0 ? 'exento' : fmtPct(cat.iva));
+
+    var fobUnit = num($fob);
+    var pesoUnit = Math.max(0.01, num($peso) || 0.01);
+    var cantidad = Math.max(1, Math.round(num($cantidad) || 1));
+    var cambio = Math.max(1, num($cambio) || 40);
+
+    var fob = fobUnit * cantidad;
+    var pesoTotal = pesoUnit * cantidad;
+    var flete = estimateFlete(pesoTotal);
+    var seguro = estimateSeguro(fob);
+    var cif = fob + flete + seguro;
+    var arancel = cif * cat.arancel;
+    var tasaConsular = cif * TASA_CONSULAR;
+    var baseIva = cif + arancel;
+    var iva = baseIva * cat.iva;
+    var despacho = estimateDespacho(cif);
+    var total = cif + arancel + tasaConsular + iva + despacho;
+    var sobrecosto = fob > 0 ? ((total - fob) / fob) * 100 : 0;
+
+    $outLabel.textContent = 'Costo nacionalizado total';
+    $outTotal.textContent = fmt.format(total);
+    $outTotalUyu.textContent = '≈ ' + fmtUyu(total * cambio) + ' UYU';
+    $outSobrecosto.textContent = (sobrecosto >= 0 ? '+' : '') + sobrecosto.toFixed(0) + '% sobre el valor FOB';
+
+    $breakdown.innerHTML = '';
+    $breakdown.appendChild(row('Valor FOB' + (cantidad > 1 ? ' (' + cantidad + ' un.)' : ''), null, fob));
+    $breakdown.appendChild(row('Flete estimado', '≈' + pesoTotal.toFixed(1) + 'kg', flete));
+    $breakdown.appendChild(row('Seguro estimado', '1.5%', seguro));
+    $breakdown.appendChild(row('Valor CIF', null, cif, { subtotal:true }));
+    $breakdown.appendChild(row('Arancel (AEC)', fmtPct(cat.arancel), arancel));
+    $breakdown.appendChild(row('Tasa consular', fmtPct(TASA_CONSULAR), tasaConsular));
+    $breakdown.appendChild(row('IVA', cat.iva === 0 ? 'exento' : fmtPct(cat.iva), iva));
+    $breakdown.appendChild(row('Despacho estimado', null, despacho));
+    $breakdown.appendChild(row('Costo nacionalizado', null, total, { subtotal:true }));
+    if (cantidad > 1){
+      $breakdown.appendChild(noteRow('Costo por unidad: ' + fmt.format(total / cantidad)));
+    }
+
+    $disclaimerMini.textContent = 'Arancel, tasa consular (5% extrazona — para origen Mercosur es 3%) e IVA se calculan sobre el valor CIF con las fórmulas oficiales. El flete, el seguro y el despacho son estimaciones (varían según transportista y despachante). Los tributos se liquidan en pesos uruguayos al tipo de cambio del día del despacho, y la posición arancelaria (NCM) exacta de tu producto — que solo confirma un despachante — puede modificar el arancel aplicado.';
+
+    lastResult = {
+      summary: cantidad + ' un. de ' + cat.label.toLowerCase()
+    };
+  }
+
+  function recalc(){
+    if (MODE === 'personal') recalcPersonal();
+    else recalcB2B();
+  }
+
+  [$categoria, $peso, $fob, $cantidad, $cambio, $origen, $valorPersonal].forEach(function(el){
+    if (!el) return;
+    el.addEventListener('input', recalc);
+    el.addEventListener('change', recalc);
+  });
+
+  $franquiciaBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      $franquiciaBtns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      franquiciaValue = btn.getAttribute('data-value');
+      recalc();
+    });
+  });
+
+  recalc();
+
+  // ---- compartir resultado (viralidad orgánica, no es el lead de gestión) ----
+  $shareBtn.addEventListener('click', function(){
+    var texto = 'Calculé cuánto me sale nacionalizar ' + (lastResult ? lastResult.summary : 'una compra') + ': ' +
+      $outTotal.textContent + ' (' + $outTotalUyu.textContent + '), ' + $outSobrecosto.textContent + '. Probalo en Nacionalizá 🛃';
+    if (navigator.share){
+      navigator.share({ title:'Nacionalizá', text:texto, url:location.href }).catch(function(){});
+    } else {
+      var url = 'https://wa.me/?text=' + encodeURIComponent(texto + ' ' + location.href);
+      window.open(url, '_blank', 'noopener');
+    }
+  });
+
+  // ---- lead: el cliente te escribe por WhatsApp con el expediente completo ----
+  var WHATSAPP_NUMBER = '59899123456'; // TODO: reemplazar por el número real del negocio
+
+  function modoLabel(){ return MODE === 'personal' ? 'Compra personal' : 'Importación comercial (B2B)'; }
+
+  function buildLeadMessage(nombre, contacto, producto){
+    var total = $outTotal.textContent;
+    var detalle = lastResult ? lastResult.summary : '';
+    var quien = nombre ? ('Soy ' + nombre + (contacto ? ' (' + contacto + ')' : '') + '. ') : (contacto ? ('Mi contacto: ' + contacto + '. ') : '');
+    return 'Hola! ' + quien +
+      'Quiero importar: ' + (producto || 'sin especificar') + ' — ' + modoLabel() + ', ' + detalle + '. ' +
+      'La calculadora me dio un costo total estimado de ' + total + '. ¿Me pasan una cotización formal?';
+  }
+  function sendWhatsApp(msg){
+    var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg);
+    window.open(url, '_blank', 'noopener');
+  }
+
+  var $leadForm = document.getElementById('lead-form');
+  $leadForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    var nombre = document.getElementById('lead-nombre').value.trim();
+    var contacto = document.getElementById('lead-contacto').value.trim();
+    var producto = document.getElementById('lead-producto').value.trim();
+    sendWhatsApp(buildLeadMessage(nombre, contacto, producto));
+  });
+
+  // ---- botón directo en el resultado: mandar esta cotización sin scrollear ----
+  function autoProducto(){
+    if (MODE === 'b2b'){
+      var cat = currentCategory();
+      var cantidad = Math.max(1, Math.round(num($cantidad) || 1));
+      return cantidad + ' un. de ' + cat.label.toLowerCase();
+    }
+    return 'compra personal (' + ($origen.value === 'usa' ? 'EE.UU.' : 'otro país') + ')';
+  }
+
+  var $sendQuoteBtn = document.getElementById('send-quote-btn');
+  var $inlineNombre = document.getElementById('inline-nombre');
+  var $inlineContacto = document.getElementById('inline-contacto');
+  var $inlineLeadSubmit = document.getElementById('inline-lead-submit');
+
+  $sendQuoteBtn.addEventListener('click', function(){
+    $inlineLead.classList.toggle('hidden');
+    if (!$inlineLead.classList.contains('hidden')) $inlineNombre.focus();
+  });
+  $inlineLeadSubmit.addEventListener('click', function(){
+    var nombre = $inlineNombre.value.trim();
+    var contacto = $inlineContacto.value.trim();
+    if (!contacto){
+      $inlineLeadHint.textContent = 'Dejanos un WhatsApp o email para poder responderte.';
+      $inlineContacto.focus();
+      return;
+    }
+    sendWhatsApp(buildLeadMessage(nombre, contacto, autoProducto()));
+    $inlineLeadHint.textContent = '¡Listo! Se abrió WhatsApp con tu cotización.';
+  });
+
+  // ---- panel interno: generá el mail para el despachante con lo que te llegó por WhatsApp ----
+  var DESPACHANTE_EMAIL = 'despachante@nacionaliza.uy'; // TODO: reemplazar por el mail real del despachante
+  var $panelToggle = document.getElementById('panel-toggle');
+  var $panelForm = document.getElementById('panel-form');
+  if ($panelToggle){
+    $panelToggle.addEventListener('click', function(){
+      $panelForm.classList.toggle('hidden');
+    });
+  }
+  var $panelSubmit = document.getElementById('panel-submit');
+  if ($panelSubmit){
+    $panelSubmit.addEventListener('click', function(){
+      var cliente = document.getElementById('panel-cliente').value.trim();
+      var contacto = document.getElementById('panel-contacto').value.trim();
+      var detalle = document.getElementById('panel-detalle').value.trim();
+      var asunto = 'Nueva consulta de importación — ' + (cliente || 'cliente sin nombre');
+      var cuerpo = 'Cliente: ' + cliente + '\nContacto: ' + contacto + '\n\nDetalle del pedido (pegado desde WhatsApp):\n' + detalle +
+        '\n\nPor favor revisar clasificación arancelaria y confirmar cotización formal.';
+      var mailUrl = 'mailto:' + DESPACHANTE_EMAIL + '?subject=' + encodeURIComponent(asunto) + '&body=' + encodeURIComponent(cuerpo);
+      window.location.href = mailUrl;
+    });
+  }
+})();
+</script>
