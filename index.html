@@ -959,6 +959,22 @@
   // ---- lead: el cliente te escribe por WhatsApp con el expediente completo ----
   var WHATSAPP_NUMBER = '59899123456'; // TODO: reemplazar por el número real del negocio
 
+  // ---- lead por mail: los datos del formulario se envían además a tu casilla vía Web3Forms ----
+  var WEB3FORMS_ACCESS_KEY = 'ec55e3ed-d6a7-4585-9798-443104149416'; // el mail de destino se cambia desde web3forms.com, no acá
+
+  function sendLeadEmail(fields){
+    var payload = Object.assign({
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: 'Nueva consulta de importación — Nacionalizá',
+      from_name: 'Nacionalizá — formulario web'
+    }, fields);
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    }).catch(function(){ /* si falla el mail, no interrumpe el flujo de WhatsApp */ });
+  }
+
   function modoLabel(){ return MODE === 'personal' ? 'Compra personal' : 'Importación comercial (B2B)'; }
 
   function buildLeadMessage(nombre, contacto, producto){
@@ -980,6 +996,15 @@
     var nombre = document.getElementById('lead-nombre').value.trim();
     var contacto = document.getElementById('lead-contacto').value.trim();
     var producto = document.getElementById('lead-producto').value.trim();
+    sendLeadEmail({
+      nombre: nombre,
+      contacto: contacto,
+      producto: producto,
+      modo: modoLabel(),
+      detalle: lastResult ? lastResult.summary : '',
+      costo_estimado: $outTotal.textContent,
+      origen: 'Formulario de contacto'
+    });
     sendWhatsApp(buildLeadMessage(nombre, contacto, producto));
   });
 
@@ -1010,6 +1035,15 @@
       $inlineContacto.focus();
       return;
     }
+    sendLeadEmail({
+      nombre: nombre,
+      contacto: contacto,
+      producto: autoProducto(),
+      modo: modoLabel(),
+      detalle: lastResult ? lastResult.summary : '',
+      costo_estimado: $outTotal.textContent,
+      origen: 'Botón "Que lo gestionemos nosotros" (calculadora)'
+    });
     sendWhatsApp(buildLeadMessage(nombre, contacto, autoProducto()));
     $inlineLeadHint.textContent = '¡Listo! Se abrió WhatsApp con tu cotización.';
   });
