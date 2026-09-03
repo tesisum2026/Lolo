@@ -543,7 +543,7 @@
                     <input id="inline-contacto" type="text" placeholder="099 123 456 o tu@email.com">
                   </div>
                 </div>
-                <button type="button" class="btn btn-brand btn-block" id="inline-lead-submit">Confirmar y enviar por WhatsApp</button>
+                <button type="button" class="btn btn-brand btn-block" id="inline-lead-submit">Confirmar y enviar consulta</button>
                 <span class="hint" id="inline-lead-hint"></span>
               </div>
             </div>
@@ -581,8 +581,8 @@
             <label for="lead-producto">¿Qué querés importar?</label>
             <input id="lead-producto" type="text" placeholder="Ej: bicicleta eléctrica">
           </div>
-          <button type="submit" class="btn btn-accent btn-block">Enviar por WhatsApp</button>
-          <span class="fallback">o escribinos a <a href="mailto:hola@nacionaliza.uy">hola@nacionaliza.uy</a></span>
+          <button type="submit" class="btn btn-accent btn-block" id="lead-submit-btn">Enviar consulta</button>
+          <span class="fallback" id="lead-submit-hint">o escribinos a <a href="mailto:hola@nacionaliza.uy">hola@nacionaliza.uy</a></span>
         </form>
       </div>
     </div>
@@ -972,23 +972,26 @@
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(payload)
-    }).catch(function(){ /* si falla el mail, no interrumpe el flujo de WhatsApp */ });
+    }).catch(function(){ /* si falla el mail, no interrumpe el envío del formulario */ });
   }
 
   function modoLabel(){ return MODE === 'personal' ? 'Compra personal' : 'Importación comercial (B2B)'; }
 
-  function buildLeadMessage(nombre, contacto, producto){
-    var total = $outTotal.textContent;
-    var detalle = lastResult ? lastResult.summary : '';
-    var quien = nombre ? ('Soy ' + nombre + (contacto ? ' (' + contacto + ')' : '') + '. ') : (contacto ? ('Mi contacto: ' + contacto + '. ') : '');
-    return 'Hola! ' + quien +
-      'Quiero importar: ' + (producto || 'sin especificar') + ' — ' + modoLabel() + ', ' + detalle + '. ' +
-      'La calculadora me dio un costo total estimado de ' + total + '. ¿Me pasan una cotización formal?';
-  }
-  function sendWhatsApp(msg){
-    var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg);
-    window.open(url, '_blank', 'noopener');
-  }
+  // Desactivado por ahora: los leads solo se mandan por mail (ver sendLeadEmail).
+  // Para volver a abrir WhatsApp además del mail, descomentá esta función y llamala
+  // junto a sendLeadEmail() en los dos submit handlers de abajo.
+  // function buildLeadMessage(nombre, contacto, producto){
+  //   var total = $outTotal.textContent;
+  //   var detalle = lastResult ? lastResult.summary : '';
+  //   var quien = nombre ? ('Soy ' + nombre + (contacto ? ' (' + contacto + ')' : '') + '. ') : (contacto ? ('Mi contacto: ' + contacto + '. ') : '');
+  //   return 'Hola! ' + quien +
+  //     'Quiero importar: ' + (producto || 'sin especificar') + ' — ' + modoLabel() + ', ' + detalle + '. ' +
+  //     'La calculadora me dio un costo total estimado de ' + total + '. ¿Me pasan una cotización formal?';
+  // }
+  // function sendWhatsApp(msg){
+  //   var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg);
+  //   window.open(url, '_blank', 'noopener');
+  // }
 
   var $leadForm = document.getElementById('lead-form');
   $leadForm.addEventListener('submit', function(e){
@@ -996,6 +999,9 @@
     var nombre = document.getElementById('lead-nombre').value.trim();
     var contacto = document.getElementById('lead-contacto').value.trim();
     var producto = document.getElementById('lead-producto').value.trim();
+    if (!contacto){
+      return;
+    }
     sendLeadEmail({
       nombre: nombre,
       contacto: contacto,
@@ -1005,7 +1011,11 @@
       costo_estimado: $outTotal.textContent,
       origen: 'Formulario de contacto'
     });
-    sendWhatsApp(buildLeadMessage(nombre, contacto, producto));
+    var $leadSubmitBtn = document.getElementById('lead-submit-btn');
+    var $leadSubmitHint = document.getElementById('lead-submit-hint');
+    $leadSubmitBtn.textContent = '¡Consulta enviada!';
+    $leadSubmitBtn.disabled = true;
+    if ($leadSubmitHint) $leadSubmitHint.textContent = 'Te vamos a contactar a la brevedad.';
   });
 
   // ---- botón directo en el resultado: mandar esta cotización sin scrollear ----
@@ -1044,8 +1054,7 @@
       costo_estimado: $outTotal.textContent,
       origen: 'Botón "Que lo gestionemos nosotros" (calculadora)'
     });
-    sendWhatsApp(buildLeadMessage(nombre, contacto, autoProducto()));
-    $inlineLeadHint.textContent = '¡Listo! Se abrió WhatsApp con tu cotización.';
+    $inlineLeadHint.textContent = '¡Listo! Te enviamos tu cotización, te contactamos a la brevedad.';
   });
 
   // ---- panel interno: generá el mail para el despachante con lo que te llegó por WhatsApp ----
